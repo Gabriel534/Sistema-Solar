@@ -38,6 +38,18 @@ public class Pergunta {
         this.resposta = "";
     }
 
+    public Pergunta(String pergunta, String opção1, String opção2, String opção3) {
+        this.pergunta = pergunta;
+        this.opção1 = opção1;
+        this.opção2 = opção2;
+        this.opção3 = opção3;
+        this.opção4 = "";
+        this.opção5 = "";
+        this.resposta = "";
+    }
+
+    
+    
     public String getResposta() {
         return resposta;
     }
@@ -100,7 +112,9 @@ public class Pergunta {
         System.out.println("a) " + this.opção1);
         System.out.println("b) " + this.opção2);
         System.out.println("c) " + this.opção3);
-        System.out.println("d) " + this.opção4);
+        if(this.opção4.compareTo("") != 0){
+            System.out.println("d) " +this.opção4);
+        }
         if(this.opção5.compareTo("") != 0){
             System.out.println("e) " + this.opção5);
         }
@@ -109,7 +123,7 @@ public class Pergunta {
     public String obterResposta(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Resposta: ");
-        this.resposta = scanner.nextLine();
+        this.resposta = scanner.nextLine().toLowerCase();
         return this.resposta;
     }
 }

@@ -4,12 +4,14 @@
  */
 package com.mycompany.sistemasolar;
 
+import java.util.List;
+
 /**
  *
  * @author sp300lab
  */
 public class Astro {
-    private String Astro1;
+    private String nomeAstro;
     private String resposta1;
     private String resposta2;
     private String resposta3;
@@ -19,7 +21,7 @@ public class Astro {
     private String resposta7;
 
     public Astro(String Astro1, String resposta1, String resposta2, String resposta3, String resposta4, String resposta5, String resposta6, String resposta7) {
-        this.Astro1 = Astro1;
+        this.nomeAstro = Astro1;
         this.resposta1 = resposta1;
         this.resposta2 = resposta2;
         this.resposta3 = resposta3;
@@ -29,9 +31,23 @@ public class Astro {
         this.resposta7 = resposta7;
     }
     
-    
-
+    public double gerarPorcentagemDeMatch(List<String> respostas){
+        double contador = 0;
+        if(resposta1.compareTo(respostas.get(0)) == 0) contador+= 1;
+        if(resposta2.compareTo(respostas.get(1)) == 0) contador+= 1;
+        if(resposta3.compareTo(respostas.get(2)) == 0) contador+= 1;
+        if(resposta4.compareTo(respostas.get(3)) == 0) contador+= 1;
+        if(resposta5.compareTo(respostas.get(4)) == 0) contador+= 1;
+        if(resposta6.compareTo(respostas.get(5)) == 0) contador+= 1;
+        if(resposta7.compareTo(respostas.get(6)) == 0) contador+= 1;
+        return (contador/7);
         
+
+    }
+
+    public String getNomeAstro(){
+        return this.nomeAstro;
+    }
 
     
 }
