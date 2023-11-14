@@ -4,10 +4,6 @@
  */
 package sistemasolar;
 import telas.TelaPerguntas;
-import java.util.Scanner;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JLabel;
 /**
  *
  * @author sp300lab
@@ -115,45 +111,28 @@ public class Pergunta {
     
     
     public void exibirPergunta(){
-        JPanel panel = (JPanel)this.tela.getContentPane();
         
-        int nComponentes = panel.getComponentCount();
-        
-        for(int x=0; x< nComponentes; x++){
-            String classe = panel.getComponent(x).toString();
-            if(classe.contains("javax.swing.JRadioButton")){
-                JRadioButton button = (JRadioButton)panel.getComponent(x);
-                if(button.getText().contains("a) ")){
-                    button.setText("a) " + this.opção1);
-                    
-                }else if(button.getText().contains("b) ")){
-                    button.setText("b) " + this.opção2);
-                    
-                }else if(button.getText().contains("c) ")){
-                    button.setText("c) " + this.opção3);
-                    
-                }else if(button.getText().contains("d) ")){
-                    if(this.opção4.compareTo("") == 0){
-                        button.setVisible(false);
-                    }else{
-                        button.setVisible(true);
-                        button.setText("d) " + this.opção4);
-                    }
-                }else if(button.getText().contains("e) ")){
-                    if(this.opção5.compareTo("") == 0){
-                        button.setVisible(false);
-                    }else{
-                        button.setVisible(true);
-                        button.setText("e) " + this.opção5);
-                    }
-                    
-                }
-            }else if(classe.contains("javax.swing.JLabel")){
-                JLabel label = (JLabel)panel.getComponent(x);
-                label.setText(this.pergunta);
-                
+        this.tela.getRadioA().setText("a) " + this.opção1);
+
+        this.tela.getRadioB().setText("b) " + this.opção2);
+
+        this.tela.getRadioC().setText("c) " + this.opção3);
+
+        if(this.opção4.compareTo("") == 0){
+            this.tela.getRadioD().setVisible(false);  
+        }else{
+            this.tela.getRadioD().setVisible(true);
+            this.tela.getRadioD().setText("d) " + this.opção4);
             }
-                    
-                    }
-    }
+        
+        if(this.opção5.compareTo("") == 0){
+            this.tela.getRadioE().setVisible(false);
+        }else{
+            this.tela.getRadioE().setVisible(true);
+            this.tela.getRadioE().setText("e) " + this.opção5);
+        }
+
+        this.tela.getLabelPergunta().setText(this.pergunta);
+
+        }
 }

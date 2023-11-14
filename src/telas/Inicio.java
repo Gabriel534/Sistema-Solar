@@ -19,11 +19,16 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
+        this.setResizable(false);
+        
         this.setBounds(500, 250, 510, 400);
         
         URL caminhoImagem = this.getClass().getResource("icon.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoImagem);
         setIconImage(iconeTitulo);
+        
+        
+        
 
        /* this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource()));*/
     }

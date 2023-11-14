@@ -23,6 +23,7 @@ public class Resposta extends javax.swing.JFrame {
      */
     public Resposta(Astro vencedor, double porcentagem) {
         initComponents();
+        this.setResizable(false);
         
         String caminho = (System.getProperty("user.dir") + "\\src\\data\\" + vencedor.getNomeAstro() +".png");
         
@@ -57,7 +58,7 @@ public class Resposta extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("O seu planeta é:");
+        jLabel1.setText("O seu astro é:");
 
         Resposta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Resposta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

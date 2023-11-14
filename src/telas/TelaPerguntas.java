@@ -8,6 +8,9 @@ import java.awt.Toolkit;
 import java.net.URL;
 import sistemasolar.JogoDePerguntas;
 import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 /**
  *
  * @author Gabriel
@@ -19,6 +22,7 @@ public class TelaPerguntas extends javax.swing.JFrame {
      */
     public TelaPerguntas() {
         initComponents();
+        this.setResizable(false);
         
         URL caminhoImagem = this.getClass().getResource("icon.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoImagem);
@@ -27,7 +31,7 @@ public class TelaPerguntas extends javax.swing.JFrame {
         this.jogo = new JogoDePerguntas(this);
         this.jogo.iniciarQuiz();
         this.setBounds(500, 250, 300, 360);
-        
+       
         
     }
 
@@ -54,38 +58,38 @@ public class TelaPerguntas extends javax.swing.JFrame {
 
         LabelPergunta.setText("Pergunta");
 
-        RadioA.setText("a) ");
         RadioA.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RadioAMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                RadioAMouseReleased(evt);
+            }
+        });
+        RadioA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioAActionPerformed(evt);
             }
         });
 
-        RadioD.setText("d) ");
         RadioD.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RadioDMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                RadioDMouseReleased(evt);
             }
         });
 
-        RadioB.setText("b) ");
         RadioB.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RadioBMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                RadioBMouseReleased(evt);
             }
         });
 
-        RadioC.setText("c) ");
         RadioC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RadioCMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                RadioCMouseReleased(evt);
             }
         });
 
-        RadioE.setText("e) ");
         RadioE.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RadioEMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                RadioEMouseReleased(evt);
             }
         });
 
@@ -118,7 +122,7 @@ public class TelaPerguntas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(LabelPergunta)
                 .addGap(18, 18, 18)
@@ -131,9 +135,9 @@ public class TelaPerguntas extends javax.swing.JFrame {
                 .addComponent(RadioD)
                 .addGap(18, 18, 18)
                 .addComponent(RadioE)
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(buttonProximaPergunta)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -156,48 +160,58 @@ public class TelaPerguntas extends javax.swing.JFrame {
         this.RadioC.setSelected(false);
         this.RadioD.setSelected(false);
         this.RadioE.setSelected(false);
+
         
     }//GEN-LAST:event_buttonProximaPerguntaActionPerformed
 
-    private void RadioEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioEMouseClicked
+    private void RadioEMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioEMouseReleased
         // TODO add your handling code here:
         this.RadioA.setSelected(false);
         this.RadioB.setSelected(false);
         this.RadioC.setSelected(false);
         this.RadioD.setSelected(false);
-    }//GEN-LAST:event_RadioEMouseClicked
+        this.RadioE.setSelected(true);
+    }//GEN-LAST:event_RadioEMouseReleased
 
-    private void RadioDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioDMouseClicked
+    private void RadioDMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioDMouseReleased
         // TODO add your handling code here:
         this.RadioA.setSelected(false);
         this.RadioB.setSelected(false);
         this.RadioC.setSelected(false);
+        this.RadioD.setSelected(true);
         this.RadioE.setSelected(false);
-    }//GEN-LAST:event_RadioDMouseClicked
+    }//GEN-LAST:event_RadioDMouseReleased
 
-    private void RadioCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioCMouseClicked
+    private void RadioCMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioCMouseReleased
         // TODO add your handling code here:
         this.RadioA.setSelected(false);
         this.RadioB.setSelected(false);
+        this.RadioC.setSelected(true);
         this.RadioD.setSelected(false);
         this.RadioE.setSelected(false);
-    }//GEN-LAST:event_RadioCMouseClicked
+    }//GEN-LAST:event_RadioCMouseReleased
 
-    private void RadioBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioBMouseClicked
+    private void RadioBMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioBMouseReleased
         // TODO add your handling code here:
         this.RadioA.setSelected(false);
+        this.RadioB.setSelected(true);
         this.RadioC.setSelected(false);
         this.RadioD.setSelected(false);
         this.RadioE.setSelected(false);
-    }//GEN-LAST:event_RadioBMouseClicked
+    }//GEN-LAST:event_RadioBMouseReleased
 
-    private void RadioAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioAMouseClicked
+    private void RadioAMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioAMouseReleased
         // TODO add your handling code here:
+        this.RadioA.setSelected(true);
         this.RadioB.setSelected(false);
         this.RadioC.setSelected(false);
         this.RadioD.setSelected(false);
         this.RadioE.setSelected(false);
-    }//GEN-LAST:event_RadioAMouseClicked
+    }//GEN-LAST:event_RadioAMouseReleased
+
+    private void RadioAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RadioAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,6 +247,64 @@ public class TelaPerguntas extends javax.swing.JFrame {
             }
         });
     }
+    
+    public JLabel getLabelPergunta() {
+        return LabelPergunta;
+    }
+
+    public void setLabelPergunta(JLabel LabelPergunta) {
+        this.LabelPergunta = LabelPergunta;
+    }
+
+    public JRadioButton getRadioA() {
+        return RadioA;
+    }
+
+    public void setRadioA(JRadioButton RadioA) {
+        this.RadioA = RadioA;
+    }
+
+    public JRadioButton getRadioB() {
+        return RadioB;
+    }
+
+    public void setRadioB(JRadioButton RadioB) {
+        this.RadioB = RadioB;
+    }
+
+    public JRadioButton getRadioC() {
+        return RadioC;
+    }
+
+    public void setRadioC(JRadioButton RadioC) {
+        this.RadioC = RadioC;
+    }
+
+    public JRadioButton getRadioD() {
+        return RadioD;
+    }
+
+    public void setRadioD(JRadioButton RadioD) {
+        this.RadioD = RadioD;
+    }
+
+    public JRadioButton getRadioE() {
+        return RadioE;
+    }
+
+    public void setRadioE(JRadioButton RadioE) {
+        this.RadioE = RadioE;
+    }
+
+    public JButton getButtonProximaPergunta() {
+        return buttonProximaPergunta;
+    }
+
+    public void setButtonProximaPergunta(JButton buttonProximaPergunta) {
+        this.buttonProximaPergunta = buttonProximaPergunta;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelPergunta;

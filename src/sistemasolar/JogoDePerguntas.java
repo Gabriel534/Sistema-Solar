@@ -5,9 +5,6 @@
 package sistemasolar;
 import java.util.List;
 import java.util.ArrayList;
-
-import java.util.HashMap;
-import java.util.Map;
 import telas.TelaPerguntas;
 import telas.Resposta;
 /**
@@ -16,35 +13,27 @@ import telas.Resposta;
  */
 public class JogoDePerguntas {
     
-    private List<Pergunta> perguntas;
-    private List<String> respostas;
-    private Astro astro1;
-    private Astro astro2;
-    private Astro astro3;
-    private Astro astro4;
-    private Astro astro5;
-    private Astro astro6;
-    private Astro astro7;
-    private Astro astro8;
-    private Astro astro9;
-    private Astro astro10;
+    private final List<Pergunta> perguntas;
+    private final List<String> respostas;
+    private final List<Astro> astros;
     private int contador = 0;
-    private TelaPerguntas tela;
+    private final TelaPerguntas tela;
     
     public JogoDePerguntas(TelaPerguntas tela) {
 
         this.respostas = new ArrayList<>();
+        this.astros = new ArrayList<>();
         
-        this.astro1 = new Astro("Mercúrio", "a", "b", "b", "a", "c", "c", "a");
-        this.astro2 = new Astro("Vênus", "a", "b", "b", "a", "c", "a", "c");
-        this.astro3 = new Astro("Terra", "a", "c", "a", "b", "c", "b", "c");
-        this.astro4 = new Astro("Marte", "a", "c", "c", "c", "c", "d", "b");
-        this.astro5 = new Astro("Júpiter", "b", "d", "b", "e", "b", "e", "c");
-        this.astro6 = new Astro("Saturno", "b", "d", "b", "e", "d", "e", "c");
-        this.astro7 = new Astro("Urano", "b", "d", "b", "e", "a", "b", "c");
-        this.astro8 = new Astro("Netuno", "b", "d", "b", "e", "b", "b", "c");
-        this.astro9 = new Astro("Plutão", "d", "d", "b", "b", "c", "c", "a");
-        this.astro10 = new Astro("Sol", "c", "a", "b", "a", "c", "a", "ac");
+        this.astros.add(new Astro("Mercúrio", "a", "b", "b", "a", "c", "c", "a"));
+        this.astros.add(new Astro("Vênus", "a", "b", "b", "a", "c", "a", "c"));
+        this.astros.add(new Astro("Terra", "a", "c", "a", "b", "c", "b", "c"));
+        this.astros.add(new Astro("Marte", "a", "c", "c", "c", "c", "d", "b"));
+        this.astros.add(new Astro("Júpiter", "b", "d", "b", "e", "b", "e", "c"));
+        this.astros.add(new Astro("Saturno", "b", "d", "b", "e", "d", "e", "c"));
+        this.astros.add(new Astro("Urano", "b", "d", "b", "e", "a", "b", "c"));
+        this.astros.add(new Astro("Netuno", "b", "d", "b", "e", "b", "b", "c"));
+        this.astros.add(new Astro("Plutão", "d", "d", "b", "b", "c", "c", "a"));
+        this.astros.add(new Astro("Sol", "c", "a", "b", "a", "c", "a", "ac"));
         
         this.tela = tela;
         
@@ -67,7 +56,13 @@ public class JogoDePerguntas {
     public void mudarPergunta(){
         if(contador <= 6){
             perguntas.get(contador).exibirPergunta();
-            contador +=1;}
+            if(contador == 6){
+                this.tela.getButtonProximaPergunta().setText("Finalizar Quiz");
+                
+            }
+            contador +=1;
+        
+        }
         else{
             this.mostrarVencedor();
         }
@@ -85,16 +80,12 @@ public class JogoDePerguntas {
     }
     
     public Astro obterAstroVencedor(){
-        Astro vencedor = astro1;
-        if(vencedor.gerarPorcentagemDeMatch(respostas) < astro2.gerarPorcentagemDeMatch(respostas)) vencedor = astro2;
-        if(vencedor.gerarPorcentagemDeMatch(respostas) < astro3.gerarPorcentagemDeMatch(respostas)) vencedor = astro3;
-        if(vencedor.gerarPorcentagemDeMatch(respostas) < astro4.gerarPorcentagemDeMatch(respostas)) vencedor = astro4;
-        if(vencedor.gerarPorcentagemDeMatch(respostas) < astro5.gerarPorcentagemDeMatch(respostas)) vencedor = astro5;
-        if(vencedor.gerarPorcentagemDeMatch(respostas) < astro6.gerarPorcentagemDeMatch(respostas)) vencedor = astro6;
-        if(vencedor.gerarPorcentagemDeMatch(respostas) < astro7.gerarPorcentagemDeMatch(respostas)) vencedor = astro7;
-        if(vencedor.gerarPorcentagemDeMatch(respostas) < astro8.gerarPorcentagemDeMatch(respostas)) vencedor = astro8;
-        if(vencedor.gerarPorcentagemDeMatch(respostas) < astro9.gerarPorcentagemDeMatch(respostas)) vencedor = astro9;
-        if(vencedor.gerarPorcentagemDeMatch(respostas) < astro10.gerarPorcentagemDeMatch(respostas)) vencedor = astro10;
+        
+        Astro vencedor = astros.get(0);
+        
+        for(Astro astro: astros){
+            if(vencedor.gerarPorcentagemDeMatch(respostas) < astro.gerarPorcentagemDeMatch(respostas)) vencedor = astro;
+        }
         return vencedor;
     }
     
