@@ -29,3 +29,12 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 - [Java Development Kit (JDK)]
 - [Maven]
 - [Swing]
+
+## Imagens do funcionamento
+![image](https://github.com/Gabriel534/Sistema-Solar/assets/55637901/40964e89-a6c6-4419-96b1-e5095d395909)
+![image](https://github.com/Gabriel534/Sistema-Solar/assets/55637901/fb97845d-23a2-4d8e-a7a9-98f80767ff65)
+![image](https://github.com/Gabriel534/Sistema-Solar/assets/55637901/d8274cca-2c75-4a3b-bc5e-7f452ddd2a46)
+
+
+
+
